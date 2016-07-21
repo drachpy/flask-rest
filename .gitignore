@@ -1,5 +1,6 @@
 *.db
 .svn
+dev.sqlite
 
 
 ### OSX
