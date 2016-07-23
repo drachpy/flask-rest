@@ -133,6 +133,15 @@ with open('models/models.py', 'a') as resource_file:
 with open('resources/' + entity_name + '.py', 'w') as resource_file:
     resource_file.write(resource.replace("<EntityName>", entity_name))
 
+with open('resources/routes.py', 'a') as writer:
+    writer.write('\n')
+    writer.write('from resources.{0} import {0}List, {0}Detail\n'\
+        .format(entity_name))
+    writer.write('api.add_resource({0}List, \'/service/api/{1}\')\n'\
+        .format(entity_name, entity_name.lower()))
+    writer.write('api.add_resource({0}Detail, \'/service/api/{1}/<id>\')\n'\
+        .format(entity_name, entity_name.lower()))
+
 whats_next = """
 Step 1: Perform `$ python migrate.py db migrate || python migrate.py db upgrade`
 Step 2: Add route to the new resource in `app.py`

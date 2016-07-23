@@ -1,16 +1,6 @@
 from settings import app, api
 from util.Logger import InfoLogger
-from resources.Ping import Ping
-from resources.UserProfile import UserProfileList, UserProfileDetail
-from resources.Book import BookList, BookDetail
-
-
-# routes
-api.add_resource(Ping, '/service/api/ping')
-api.add_resource(UserProfileList, '/service/api/userprofile')
-api.add_resource(UserProfileDetail, '/service/api/userprofile/<id>')
-api.add_resource(BookList, '/service/api/book')
-api.add_resource(BookDetail, '/service/api/book/<id>')
+import resources.routes
 
 
 # entry point
