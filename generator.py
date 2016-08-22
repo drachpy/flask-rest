@@ -52,12 +52,12 @@ class <EntityName>List(Resource):
         query = <EntityName>.query.all()
 
         resp = make_response(jsonify(
-            seq(query)\\
+            (seq(query)
             .select(lambda p:
             {
                 'id': p.id,
                 'code': p.code
-            })\\
+            }))
             .to_list()
         ))
         resp.status_code = 200
@@ -83,12 +83,12 @@ class <EntityName>Detail(Resource):
         query = <EntityName>.query.get_or_404(id)
 
         resp = make_response(jsonify(
-            seq([query])\\
+            (seq([query])
             .select(lambda p:
             {
                 'id': p.id,
                 'code': p.code
-            })\\
+            }))
             .first()
         ))
         resp.status_code = 200
